@@ -53,7 +53,6 @@ function Login() {
       setPictureUrl(profile.pictureUrl);
       setStatusMessage(profile.statusMessage);
       setUserId(profile.userId);
-      // InsertProfile(idToken, profile)
     }).catch(err => console.error(err));
   }
 
