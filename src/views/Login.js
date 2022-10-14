@@ -3,7 +3,7 @@ import '../App.css';
 import liff from '@line/liff';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { hostname } from '../hostname'
+// import { hostname } from '../hostname'
 function Login() {
 
   const [pictureUrl, setPictureUrl] = useState(logo);
