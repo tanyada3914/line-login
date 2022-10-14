@@ -61,7 +61,7 @@ function Login() {
   }
 
   useEffect(() => {
-    initLine();
+    // initLine();
   }, []);
 
   return (
