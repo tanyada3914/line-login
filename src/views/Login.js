@@ -31,6 +31,10 @@ function Login() {
     const idToken = liff.getIDToken();
     setIdToken(idToken);
     liff.getProfile().then(profile => {
+      setDisplayName(profile.displayName);
+      setPictureUrl(profile.pictureUrl);
+      setStatusMessage(profile.statusMessage);
+      setUserId(profile.userId);
       InsertProfile(idToken, profile)
     }).catch(err => console.error(err));
   }
@@ -40,7 +44,7 @@ function Login() {
       let res = await axios({
         method: "post",
         // headers: { 'Authorization': `Bearer ${idToken}` },
-        url: `${hostname}/member/InsertProfile`,
+        url: `http://localhost:8009/member/InsertProfile`,
         data: {
           mem_id: '1000000001111',
           displayName: profile.displayName,
@@ -50,10 +54,7 @@ function Login() {
         }
       })
       if (res.data.status_code === '200') {
-        setDisplayName(profile.displayName);
-        setPictureUrl(profile.pictureUrl);
-        setStatusMessage(profile.statusMessage);
-        setUserId(profile.userId);
+        
       }
     } catch (error) {
       console.log(error)
@@ -61,7 +62,7 @@ function Login() {
   }
 
   useEffect(() => {
-    // initLine();
+    initLine();
   }, []);
 
   return (
