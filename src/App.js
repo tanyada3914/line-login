@@ -36,11 +36,11 @@ function App() {
       setPictureUrl(profile.pictureUrl);
       setStatusMessage(profile.statusMessage);
       setUserId(profile.userId);
-      InsertProfile(profile)
+      InsertProfile(idToken, profile)
     }).catch(err => console.error(err));
   }
 
-  const InsertProfile = (profile) => {
+  const InsertProfile = (idToken, profile) => {
     try {
       let res = axios({
         method: 'post',
@@ -48,7 +48,10 @@ function App() {
         headers: {
           'Content-Type': 'application/json'
         },
-        data: profile
+        data: {
+          ...profile,
+          idToken: idToken
+        }
       })
       if (res.data.status_code === '200') {
         console.log(res.data)
