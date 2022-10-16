@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import liff from '@line/liff';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function App() {
 
@@ -41,7 +42,7 @@ function App() {
 
   const InsertProfile = (profile) => {
     try {
-      let res = ({
+      let res = axios({
         method: 'post',
         url: 'https://b0f0-119-42-78-6.ap.ngrok.io/member/InsertProfile',
         headers: {
@@ -49,6 +50,9 @@ function App() {
         },
         data: profile
       })
+      if (res.data.status_code === '200') {
+        console.log(res.data)
+      }
     } catch (error) {
       console.log(error)
     }
