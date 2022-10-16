@@ -40,9 +40,9 @@ function App() {
     }).catch(err => console.error(err));
   }
 
-  const InsertProfile = (idToken, profile) => {
+  const InsertProfile = async (idToken, profile) => {
     try {
-      let res = axios({
+      let res = await axios({
         method: 'post',
         url: 'https://b0f0-119-42-78-6.ap.ngrok.io/member/InsertProfile',
         headers: {
